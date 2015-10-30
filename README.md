@@ -1,4 +1,4 @@
-# FlamesCP Version 0.51 build 3
+# FlamesCP Version 0.51 build 5
 a lightweight control panel for single minecraft servers
 
 ## Notes
