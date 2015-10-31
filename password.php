@@ -20,7 +20,7 @@ include('session.php');
 <head>
 <h1>Change your password</h1>
 <p>Changing password for: <b><?php echo $_SESSION['logged_in_as']; ?></b></p>
-<form action="password.php" method="GET">
+<form action="password.php" method="post">
 <div class="input-group">
 <input type="password" placeholder="New password..." name="password" class="form-control">
 <span class="input-group-btn">
@@ -30,8 +30,8 @@ include('session.php');
 </form>
 
 <?php
-if(isset($_GET['password'])){
-$password = $_GET['password'];
+if(isset($_POST['password'])){
+$password = $_POST['password'];
 include_once 'config.php';
 $conn = mysql_connect('127.0.0.1', 'root', $mysqlpass);
 mysql_select_db('users', $conn);
