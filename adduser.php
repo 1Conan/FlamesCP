@@ -60,7 +60,7 @@ die('<br><a href="dashboard.php" class="btn btn-danger btn-lg">Back</a>');
 ?>
 <h1>Add user</h1>
 <hr>
-<form action="adduser.php" method="GET" id="user">
+<form action="adduser.php" method="post" id="user">
 <input type="text" name="username" class="form-control" placeholder="Username...">
 <br>
 <input type="password" name="password" class="form-control" placeholder="Password...">
@@ -78,10 +78,10 @@ die('<br><a href="dashboard.php" class="btn btn-danger btn-lg">Back</a>');
 </form>
 
 <?php
-if (isset($_GET['username']) && isset($_GET['password']) && isset($_GET['rank'])){
-$username = filter_var($_GET['username'], FILTER_SANITIZE_STRIPPED);
-$password = filter_var($_GET['password'], FILTER_SANITIZE_STRIPPED);
-$rank = $_GET['rank'];
+if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['rank'])){
+$username = filter_var($_POST['username'], FILTER_SANITIZE_STRIPPED);
+$password = filter_var($_POST['password'], FILTER_SANITIZE_STRIPPED);
+$rank = $_POST['rank'];
 include_once 'config.php';
 $conn = mysql_connect('127.0.0.1', 'root', $mysqlpass);
 mysql_select_db('users', $conn);
