@@ -54,7 +54,8 @@ body {
 <?php
 require('session.php');
 if($_SESSION['rank'] == "mod"){
-die('<div class="alert alert-danger">Removing users is not permitted as a moderator.</div>');
+echo '<div class="alert alert-danger">Removing users is not permitted as a moderator.</div>';
+die('<br><a href="dashboard.php" class="btn btn-danger btn-lg">Back</a>');
 }
 ?>
 <h1>Remove user</h1>
@@ -86,7 +87,7 @@ while($users = mysql_fetch_array($userlist)){
 
 <?php
 if (isset($_GET['username'])){
-$username = $_GET['username'];
+$username = escapeshellarg($_GET['username']);
 
 if ($username == "admin"){
 die("<div class='alert alert-danger'>You may not delete the administrative user.</div><a href='dashboard.php' class='btn btn-info'>Return to dashboard</a>");
