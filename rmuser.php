@@ -87,7 +87,7 @@ while($users = mysql_fetch_array($userlist)){
 
 <?php
 if (isset($_GET['username'])){
-$username = escapeshellarg($_GET['username']);
+$username = filter_var($_GET['username'], FILTER_SANITIZE_STRIPPED);
 
 if ($username == "admin"){
 die("<div class='alert alert-danger'>You may not delete the administrative user.</div><a href='dashboard.php' class='btn btn-info'>Return to dashboard</a>");
