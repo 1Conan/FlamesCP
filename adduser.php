@@ -79,8 +79,8 @@ die('<br><a href="dashboard.php" class="btn btn-danger btn-lg">Back</a>');
 
 <?php
 if (isset($_GET['username']) && isset($_GET['password']) && isset($_GET['rank'])){
-$username = escapeshellarg($_GET['username']);
-$password = escapeshellarg($_GET['password']);
+$username = filter_var($_GET['username'], FILTER_SANITIZE_STRIPPED);
+$password = filter_var($_GET['password'], FILTER_SANITIZE_STRIPPED);
 $rank = $_GET['rank'];
 include_once 'config.php';
 $conn = mysql_connect('127.0.0.1', 'root', $mysqlpass);
