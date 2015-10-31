@@ -54,7 +54,8 @@ body {
 <?php
 require('session.php');
 if($_SESSION['rank'] == "mod"){
-die('<div class="alert alert-danger">Adding users is not permitted as a moderator.</div>');
+echo '<div class="alert alert-danger">Adding users is not permitted as a moderator.</div>';
+die('<br><a href="dashboard.php" class="btn btn-danger btn-lg">Back</a>');
 }
 ?>
 <h1>Add user</h1>
@@ -78,8 +79,8 @@ die('<div class="alert alert-danger">Adding users is not permitted as a moderato
 
 <?php
 if (isset($_GET['username']) && isset($_GET['password']) && isset($_GET['rank'])){
-$username = $_GET['username'];
-$password = $_GET['password'];
+$username = escapeshellarg($_GET['username']);
+$password = escapeshellarg($_GET['password']);
 $rank = $_GET['rank'];
 include_once 'config.php';
 $conn = mysql_connect('127.0.0.1', 'root', $mysqlpass);
@@ -95,7 +96,7 @@ echo '</pre>';
 echo '<a href="dashboard.php" class="btn btn-info">Return to dashboard</a>';
 } else {
 echo '<pre>';
-echo "User exists!";
+echo "User already exists.";
 echo '</pre>';
 echo '<a href="dashboard.php" class="btn btn-info">Return to dashboard</a>';
 }
