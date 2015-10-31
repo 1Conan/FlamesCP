@@ -25,7 +25,7 @@ $result = mysql_query($query);
 
 if(mysql_num_rows($result) == 0) // User not found. So, redirect to login_form again.
 {
-    header('Location: index.php?error=Invalid username and/or password.');
+    header('Location: index.php?error=1');
 }
  
 $userData = mysql_fetch_array($result, MYSQL_ASSOC);
