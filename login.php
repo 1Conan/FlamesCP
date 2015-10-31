@@ -1,16 +1,14 @@
 <?php
 session_start();
-?>
 
-<?php
 ob_start();
 
-if (empty($_GET['username'])) {
+if (empty($_POST['username'])) {
     header('Location: index.php?error=1');
 }
 
-$username = $_GET['username'];
-$password = $_GET['password'];
+$username = $_POST['username'];
+$password = $_POST['password'];
  
 include_once 'config.php';
 $conn = mysql_connect('localhost', 'root', $mysqlpass);
@@ -43,12 +41,3 @@ if(mysql_num_rows($result) == 1) {
         header('Location: dashboard.php');
 }
 ?>
-
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
